@@ -17,7 +17,8 @@ const carsSlice = createSlice({
     builder
       .addCase(fetchCars.fulfilled, handleFulfielledGet)
       .addCase(fetchCars.pending, handlePending)
-      .addCase(fetchCars.rejected, handleRejected);
+      .addCase(fetchCars.rejected, handleRejected)
+ 
   },
 });
 export const CarsReducer = carsSlice.reducer;

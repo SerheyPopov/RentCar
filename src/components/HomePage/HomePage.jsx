@@ -1,8 +1,14 @@
-
+import { MainContainer,SubContainer, Image } from './HomePage.styled';
 
 const HomePage = () => {
+  const logo = require('../../images/main.png');
+
     return (
-        <div>Home</div>
-    )
-}
-export default HomePage
+      <MainContainer>
+        <SubContainer>
+          <Image src={logo} alt="logo" />
+        </SubContainer>
+      </MainContainer>
+    );
+};
+export default HomePage;

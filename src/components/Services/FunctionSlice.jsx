@@ -5,10 +5,7 @@ export const handlePending = state => {
 export const handleFulfielledGet = (state, action) => {
   state.isLoading = false;
   state.error = null;
-  const aa = [...state.carsList, ...action.payload];
-  state.carsList = aa;
-console.log(aa);
-
+  state.carsList = action.payload;
 };
 
 export const handleRejected = (state, action) => {

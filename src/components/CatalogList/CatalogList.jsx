@@ -1,101 +1,110 @@
 import {
   MainContainer,
-  CardContainer,
-  ImageContainer,
-  Image,
-  NameContainer,
-  DescriptionContainer,
-  LearnMoreButton,
-  ButtonSvg,
-  Svg,
-  Brend,
-  // Model,
-  Prise,
-  DescriptionText,
-  DescriptionItem,
+  LoadMorecontainer,
+  LoadMoreButton,
   MainContainerList,
 } from './CatalogList.styled';
-import Icon from '../../images/icons.svg';
-import { selectCars } from '../../redux/Selectors';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
 import { fetchCars } from '../../redux/Operations';
+import CarCard from '../CarCard/CarCard';
+import SearchBar from '../SearchBar/SearchBar';
+import { favoritesCars } from '../../redux/Selectors';
+import { selectCars } from '../../redux/Selectors';
 
-const CatalogList = () => {
-  const [page, setPage] = useState(1);
-
+const CatalogList = prop => {
+  // const [page, setPage] = useState(1);
+  // const [like, setLike] = useState(false);
+  const [searchParam, setSearchParam] = useState({});
+  // const [filterCars, setFilterCars]= useState([])
+  const favorite = useSelector(favoritesCars);
   const cars = useSelector(selectCars);
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
+  //   const find = () => {
+  //   dispatch(fetchCars(page));
+  // }
 
-  useEffect(() => {
-    dispatch(fetchCars(page));
-  }, [dispatch, page]);
+  // useEffect(() => {
+  //   setFilterCars(cars);
+  //   if (searchParam.name !== '') {
+  //    return setFilterCars(cars.filter(car => car.make === searchParam.name));
+  //   }
+  //   if (searchParam.price !== '') {
+  //    return setFilterCars(
+  //      cars.filter(car => car.rentalPrice <= searchParam.price)
+  //    );
+  //   }
+  //   if (searchParam.from !== '') {
+  //     return setFilterCars(
+  //       cars.filter(
+  //         car =>
+  //           (car.mileage >= searchParam.from) & (car.mileage <= searchParam.to)
+  //       )
+  //     );
+  //   }
+  // }, [
+  //   cars,
+  //   searchParam.from,
+  //   searchParam.to,
+  //   searchParam.price,
+  //   searchParam.name,
+  // ]);
 
-  const handleLoadMore = () => {
-    setPage(page + 1);
+  const indexId = favorite.map(i => i.id);
+  // const carId = cars.map(i => i.id);
+
+  // console.log(indexId);
+
+  const handleSubmit = (values, { resetForm }) => {
+    setSearchParam(values);
+    resetForm();
   };
 
-  const defCar = require('../../images/defaultCar.png');
+  // console.log(cars.filter((car) => car.make === searchParam.name));
+  // console.log(cars.filter(car => car.rentalPrice <= searchParam.price));
+  // console.log(
+  //   cars.filter(
+  //     car =>
+  //       (car.mileage >= searchParam.from) & (car.mileage<= searchParam.to)
+  //   )
+  // );
+
+  const searchCar = () => {
+    if (searchParam.name !== '') {
+      return cars.filter(car => car.make === searchParam.name);
+    }
+    if (searchParam.price !== '') {
+      return cars.filter(car => car.rentalPrice <= searchParam.price);
+    }
+    if (searchParam.from !== '') {
+      return cars.filter(
+        car =>
+          (car.mileage >= searchParam.from) & (car.mileage <= searchParam.to)
+      );
+    }
+   
+      return cars;
+    
+  };
+  // console.log(searchCar());
+
   return (
     <MainContainer>
+      <SearchBar search={handleSubmit} />
       <MainContainerList>
         {cars.map(car => (
           <li key={car.id}>
-            <CardContainer>
-              <ImageContainer>
-                {car.img ? (
-                  <Image src={car.img} alt="rent car" />
-                ) : (
-                  <Image src={defCar} alt="rent car" />
-                )}
-
-                <ButtonSvg>
-                  <Svg>
-                    <use href={Icon + '#like'} />
-                  </Svg>
-                </ButtonSvg>
-              </ImageContainer>
-              <NameContainer>
-                <Brend>
-                  {car.make}, {car.year}
-                </Brend>
-
-                <Prise>{car.rentalPrice}</Prise>
-              </NameContainer>
-              <DescriptionContainer>
-                <DescriptionItem>
-                  <DescriptionText>{car.address.split(',')[1]}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.address.split(',')[2]}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.rentalCompany}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.type}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.model}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.id}</DescriptionText>
-                </DescriptionItem>
-                <DescriptionItem>
-                  <DescriptionText>{car.accessories[0]}</DescriptionText>
-                </DescriptionItem>
-              </DescriptionContainer>
-              <LearnMoreButton>Learn more</LearnMoreButton>
-            </CardContainer>
+            <CarCard car={car} />
           </li>
         ))}
       </MainContainerList>
-      <div>
-        <button onClick={handleLoadMore}>Load more</button>
-      </div>
+      <LoadMorecontainer>
+        <LoadMoreButton type="button" onClick={prop.click}>
+          Load more
+        </LoadMoreButton>
+        <button onClick={prop.find}>find</button>
+      </LoadMorecontainer>
     </MainContainer>
   );
 };
