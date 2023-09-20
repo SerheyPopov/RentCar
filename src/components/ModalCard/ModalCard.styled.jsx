@@ -6,6 +6,16 @@ export const CardContainer = styled.div`
   position: relative;
   padding: 40px;
   box-sizing: border-box;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 4px;
+    background-color: #b8b8b8;
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #828583;
+    border-radius: 12px;
+  }
 `;
 export const ImageContainer = styled.div`
   margin-bottom: 14px;
@@ -14,7 +24,6 @@ export const Image = styled.img`
   width: 461px;
   height: 248px;
   border-radius: 14px;
-
   object-fit: cover;
 `;
 export const ButtonSvg = styled.button`
@@ -52,13 +61,10 @@ export const DescriptionContainer = styled.ul`
   width: 100%;
   flex-wrap: wrap;
   margin-bottom: 10px;
-
-  //   gap: 4px;
 `;
 export const DescriptionItem = styled.li`
   display: flex;
   margin-bottom: 4px;
-
   &:not(:last-child) {
     &:after {
       content: '|';
@@ -93,17 +99,6 @@ export const AccessoriesTitle = styled.h2`
   margin-bottom: 8px;
 `;
 export const Accessorieslist = styled.ul`
-  height: 40px;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    width: 4px;
-    background-color: #b8b8b8;
-    border-radius: 12px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #828583;
-    border-radius: 12px;
-  }
   display: flex;
   width: 100%;
   flex-wrap: wrap;

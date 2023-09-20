@@ -1,3 +1,6 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
 import Icon from '../../images/icons.svg';
 import {
   CardContainer,
@@ -14,46 +17,25 @@ import {
   DescriptionItem,
 } from './CarCard.styled';
 import Modal from '../Modal/Modal';
-import {  useState } from 'react';
-import { useDispatch } from 'react-redux';
-// import { favoritesCars } from '../../redux/Selectors';
-// import { selectCars } from '../../redux/Selectors';
 import { favoriteCars, deleteFavorite } from '../../redux/FavoriteSlice';
 
 const CarCart = prop => {
-    // const [like, setLike] = useState(false);
-
+  const [like, setLike] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  // const favorite = useSelector(favoritesCars);
-  // const cars = useSelector(selectCars);
   const dispatch = useDispatch();
-
-  // const indexId = favorite.map(i => i.id);
-  // const carId = cars.map(i => i.id);
-
-
 
   const toggleModal = e => {
     setShowModal(!showModal);
   };
 
   const toggleLike = e => {
-
-    if (prop.like) {
+    setLike(!like);
+    if (prop.like || like) {
       return dispatch(deleteFavorite(e.currentTarget.name));
     }
 
     dispatch(favoriteCars(prop.car));
   };
-  // const deleteFav = () => {
-  //   dispath(deleteFavorite(prop.car.id));
-  // };
-
-
-  
-
-
-
 
   const defCar = require('../../images/defaultCar.png');
   return (
@@ -67,8 +49,8 @@ const CarCart = prop => {
 
         <ButtonSvg name={prop.car.id} onClick={toggleLike}>
           <Svg
-            $stroke={prop.like ? '#3470FF' : '#FFFFFFCC'}
-            $fill={prop.like ? '#3470FF' : 'none'}
+            $stroke={prop.like || like ? '#3470FF' : '#FFFFFFCC'}
+            $fill={prop.like || like ? '#3470FF' : 'none'}
           >
             <use href={Icon + '#like'} />
           </Svg>

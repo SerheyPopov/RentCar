@@ -3,28 +3,19 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   width: 274px;
   height: 426px;
-  //   outline: 1px solid red;
   position: relative;
   margin-bottom: 50px;
-  //   border-bottom-left-radius: 12px;
-  //   border-bottom-right-radius: 12px;
-
-  //   &:hover {
-  //     box-shadow: 0 20px 16px -16px rgba(0, 0, 0, 0.6);
-  //   }
 `;
 export const ImageContainer = styled.div`
   width: 274px;
   height: 268px;
   margin-bottom: 14px;
-  //   outline: 1px solid red;
 `;
 export const Image = styled.img`
   width: 274px;
   height: 268px;
   object-fit: cover;
   border-radius:12px;
-  //   flex-shrink: 0;
 `;
 export const ButtonSvg = styled.button`
   position: absolute;
@@ -43,9 +34,7 @@ export const NameContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
-  //   outline: 1px solid red;
 `;
-
 export const Brend = styled.h1`
   color: #121417;
   font-size: 16px;
@@ -63,7 +52,6 @@ export const DescriptionContainer = styled.ul`
   display: flex;
   width: 270px;
   flex-wrap: wrap;
-
   gap: 4px;
 `;
 export const DescriptionItem = styled.li`
@@ -82,7 +70,6 @@ export const DescriptionText = styled.p`
   line-height: 18px;
   margin-right: 6px;
 `;
-
 export const LearnMoreButton = styled.button`
   width: 274px;
   height: 44px;

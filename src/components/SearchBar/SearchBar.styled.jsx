@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 
 export const MainContainer = styled.div`
-  //   outline: 1px solid red;
   padding-top: 60px;
   height: 74px;
   width: 859px;
@@ -11,7 +10,6 @@ export const MainContainer = styled.div`
   margin-bottom: 50px;
 `;
 export const FormContainer = styled.div`
-  //   outline: 1px solid red;
   height: 90px;
   align-items: flex-end;
   display: flex;
@@ -67,7 +65,6 @@ export const FromMileage = styled(Field)`
   width: 160px;
   height: 48px;
   padding: 0 14px;
-
   border-right-color: rgba(138, 138, 137, 0.2);
   border-left: none;
   border-top: none;
@@ -110,7 +107,6 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
-
   &:hover {
     background: #0b44cd;
   }

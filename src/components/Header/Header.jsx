@@ -1,16 +1,24 @@
 import { Suspense } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
+import { fetchCars } from '../../redux/Operations';
 import { MainContainer, MainList, Button } from './Header.styled';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const fetchAll = () => {
+    dispatch(fetchCars());
+  };
+  
     return (
       <>
         <MainContainer>
           <MainList>
             <li>
               <Link to="catalog">
-                <Button>catalog</Button>
+                <Button onClick={fetchAll}>catalog</Button>
               </Link>
             </li>
             <li>
@@ -21,7 +29,7 @@ const Header = () => {
           </MainList>
         </MainContainer>
 
-        <Suspense >
+        <Suspense>
           <Outlet />
         </Suspense>
       </>

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const MainContainer = styled.div`
-//   outline: 1px solid red;
   width: 1184px;
   margin-left: auto;
   margin-right: auto;

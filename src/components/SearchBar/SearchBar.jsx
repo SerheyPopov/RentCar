@@ -1,3 +1,5 @@
+import { Formik, Form } from 'formik';
+
 import {
   MainContainer,
   FormContainer,
@@ -9,7 +11,6 @@ import {
   Button,
   InputContainer,
 } from './SearchBar.styled';
-import { Formik, Form } from 'formik';
 
 const initialValue = {
   name: '',
@@ -17,56 +18,51 @@ const initialValue = {
   from: '',
   to: '',
 };
-
+const prs = [
+  'To $',
+  '$30',
+  '$40',
+  '$50',
+  '$60',
+  '$70',
+  '$80,',
+  '$90',
+  '$100',
+  '$120',
+  '$130',
+  '$140',
+  '$150',
+  '$160',
+  '$170',
+  '$180',
+  '$190',
+  '$200',
+];
+const model = [
+  'All cars',
+  'Buick',
+  'Volvo',
+  'HUMMER',
+  'Subaru',
+  'Mitsubishi',
+  'Nissan',
+  'Lincoln',
+  'GMC',
+  'Hyundai',
+  'MINI',
+  'Bentley',
+  'Mercedes-Benz',
+  'Aston Martin',
+  'Pontiac',
+  'Lamborghini',
+  'Audi',
+  'BMW',
+  'Chevrolet',
+  'Chrysler',
+  'Kia',
+  'Land',
+];
 const SearchBar = prop => {
-  // const handleSubmit = (values, { resetForm }) => {
-  //   console.log(values);
-  //   resetForm();
-  // };
-  const prs = [
-    '$',
-    '$30',
-    '$40',
-    '$50',
-    '$60',
-    '$70',
-    '$80,',
-    '$90',
-    '$100',
-    '$120',
-    '$130',
-    '$140',
-    '$150',
-    '$160',
-    '$170',
-    '$180',
-    '$190',
-    "$200",
-  ];
-  const model = [
-    'All cars',
-    'Buick',
-    'Volvo',
-    'HUMMER',
-    'Subaru',
-    'Mitsubishi',
-    'Nissan',
-    'Lincoln',
-    'GMC',
-    'Hyundai',
-    'MINI',
-    'Bentley',
-    'Mercedes-Benz',
-    'Aston Martin',
-    'Pontiac',
-    'Lamborghini',
-    'Audi',
-    'BMW',
-    'Chevrolet',
-    'Chrysler',
-    'Kia',
-    'Land',
-  ];
   return (
     <MainContainer>
       <Formik initialValues={initialValue} onSubmit={prop.search}>

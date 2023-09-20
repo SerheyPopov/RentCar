@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const MainContainer = styled.div`
   width: 1184px;
   margin-left: auto;
-  outline: 1px solid red;
   margin-right: auto;
 `;
 export const MainContainerList = styled.ul`
