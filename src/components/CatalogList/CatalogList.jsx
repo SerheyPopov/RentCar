@@ -4,12 +4,12 @@ import {
   LoadMoreButton,
   MainContainerList,
 } from './CatalogList.styled';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { fetchCars } from '../../redux/Operations';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
+// import { fetchCars } from '../../redux/Operations';
 import CarCard from '../CarCard/CarCard';
 import SearchBar from '../SearchBar/SearchBar';
-import { favoritesCars } from '../../redux/Selectors';
+// import { favoritesCars } from '../../redux/Selectors';
 import { selectCars } from '../../redux/Selectors';
 
 const CatalogList = prop => {
@@ -17,7 +17,7 @@ const CatalogList = prop => {
   // const [like, setLike] = useState(false);
   const [searchParam, setSearchParam] = useState({});
   // const [filterCars, setFilterCars]= useState([])
-  const favorite = useSelector(favoritesCars);
+  // const favorite = useSelector(favoritesCars);
   const cars = useSelector(selectCars);
   // const dispatch = useDispatch();
 
@@ -51,24 +51,13 @@ const CatalogList = prop => {
   //   searchParam.name,
   // ]);
 
-  const indexId = favorite.map(i => i.id);
-  // const carId = cars.map(i => i.id);
 
-  // console.log(indexId);
 
   const handleSubmit = (values, { resetForm }) => {
     setSearchParam(values);
     resetForm();
   };
 
-  // console.log(cars.filter((car) => car.make === searchParam.name));
-  // console.log(cars.filter(car => car.rentalPrice <= searchParam.price));
-  // console.log(
-  //   cars.filter(
-  //     car =>
-  //       (car.mileage >= searchParam.from) & (car.mileage<= searchParam.to)
-  //   )
-  // );
 
   const searchCar = () => {
     if (searchParam.name !== '') {
@@ -87,13 +76,12 @@ const CatalogList = prop => {
       return cars;
     
   };
-  // console.log(searchCar());
 
   return (
     <MainContainer>
       <SearchBar search={handleSubmit} />
       <MainContainerList>
-        {cars.map(car => (
+        {searchCar().map(car => (
           <li key={car.id}>
             <CarCard car={car} />
           </li>

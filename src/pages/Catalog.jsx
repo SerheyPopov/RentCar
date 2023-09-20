@@ -10,9 +10,9 @@ const Catalog = () => {
 
  
 
-  // useEffect(() => {
-  //   dispatch(fetchCars(page));
-  // },[dispatch,page]);
+  useEffect(() => {
+    dispatch(fetchCars(page));
+  },[dispatch,page]);
 
   const handleLoadMore = () => {
     setPage(page + 1);

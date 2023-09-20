@@ -14,10 +14,10 @@ import {
   DescriptionItem,
 } from './CarCard.styled';
 import Modal from '../Modal/Modal';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { favoritesCars } from '../../redux/Selectors';
-import { selectCars } from '../../redux/Selectors';
+import {  useState } from 'react';
+import { useDispatch } from 'react-redux';
+// import { favoritesCars } from '../../redux/Selectors';
+// import { selectCars } from '../../redux/Selectors';
 import { favoriteCars, deleteFavorite } from '../../redux/FavoriteSlice';
 
 const CarCart = prop => {
